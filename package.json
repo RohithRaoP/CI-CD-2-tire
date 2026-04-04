@@ -1,11 +1,10 @@
 {
-  "name": "node-devops-app",
+  "name": "my-app",
   "version": "1.0.0",
-  "main": "app.js",
- "scripts": {
-  "start": "node app.js",
-  "build": "echo 'not needed'"
-}
+  "scripts": {
+    "start": "node app.js",
+    "build": "echo 'not needed'"
+  },
   "dependencies": {
     "express": "^4.18.2"
   }
