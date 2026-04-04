@@ -4,6 +4,7 @@
   "scripts": {
     "start": "node app.js",
     "build": "echo 'not needed'"
+    "test": "echo 'no tests defined'"
   },
   "dependencies": {
     "express": "^4.18.2"
