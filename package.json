@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node app.js",
-    "build": "echo 'not needed'"
+    "build": "echo 'not needed'",
     "test": "echo 'no tests defined'"
   },
   "dependencies": {
