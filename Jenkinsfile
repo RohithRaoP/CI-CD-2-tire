@@ -63,4 +63,7 @@ pipeline {
                 kubectl set image deployment/nodejs nodejs=${IMAGE_URI}
                 kubectl apply -f deployment.yaml
                 """
-            }
+                }
+        }
+    }
+}
