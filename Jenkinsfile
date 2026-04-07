@@ -13,13 +13,6 @@ pipeline {
         IMAGE_URI      = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}"
     }
 
-    stages {
-        stage('Cleanup Workspace') {
-            steps {
-                cleanWs() // Professional touch: Start with a clean directory
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
