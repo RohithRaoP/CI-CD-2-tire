@@ -52,23 +52,25 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                 sh """
+                # 1. Update EKS Context for Stockholm
                 aws eks update-kubeconfig --region ${AWS_REGION} --name ${CLUSTER_NAME}
+                
+                # 2. Apply Database (These work already)
                 kubectl apply -f k8/mongodb-Deployment.yaml
                 kubectl apply -f k8/mongodb-service.yaml
-                kubectl apply -f k8/nodejs-deployment.yaml
-                kubectl set image deployment/nodejs nodejs=${IMAGE_URI}
-                kubectl rollout status deployment/nodejs
+                
+                # 3. Apply Node.js Manifests (FIXED FILENAMES)
+                # We use quotes because of the space in 'node.js Deployment.yaml'
+                kubectl apply -f "k8/node.js Deployment.yaml"
+                kubectl apply -f "k8/node.js service.yaml"
+                
+                # 4. Update the Image (FIXED NAMES)
+                # We use 'nodejs-deployment' because that is the 'metadata.name' in your YAML
+                # We assume the container name inside the YAML is 'nodejs'
+                kubectl set image deployment/nodejs-deployment nodejs=${IMAGE_URI}
+                
+                # 5. Final Status Check
+                kubectl rollout status deployment/nodejs-deployment
                 """
             }
         }
-    }
-
-    post {
-        success {
-            echo "Successfully deployed!"
-        }
-        failure {
-            echo "Pipeline failed. Check syntax or AWS permissions."
-        }
-    }
-}
