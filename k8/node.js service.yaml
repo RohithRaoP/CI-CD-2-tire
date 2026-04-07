@@ -1,13 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodejs
+  name: nodejs-service
 spec:
-type: Nodeport
-selector:
-  app: nodejs
-ports:
-  - protocal: TCP
-    port: 3000
-    targetport: 80
-    nodeport: 30007
+  selector:
+    app: nodejs
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
