@@ -53,7 +53,9 @@ pipeline {
             steps {
                 sh """
                 aws eks update-kubeconfig --region ${AWS_REGION} --name ${CLUSTER_NAME}
-                kubectl apply -f deployment.yaml
+                kubectl apply -f k8/mongodb-Deployment.yaml
+                kubectl apply -f k8/mongodb-service.yaml
+                kubectl apply -f k8/deployment.yaml
                 kubectl set image deployment/nodejs nodejs=${IMAGE_URI}
                 kubectl rollout status deployment/nodejs
                 """
