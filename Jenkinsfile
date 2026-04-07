@@ -67,7 +67,7 @@ pipeline {
                 # 4. Update the Image (FIXED NAMES)
                 # We use 'nodejs-deployment' because that is the 'metadata.name' in your YAML
                 # We assume the container name inside the YAML is 'nodejs'
-                kubectl set image deployment/nodejs-deployment nodejs=${IMAGE_URI}
+                kubectl set image deployment/nodejs-deployment nodejs-container=${IMAGE_URI}
                 
                 # 5. Final Status Check
                 kubectl rollout status deployment/nodejs-deployment
