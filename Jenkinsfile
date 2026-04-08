@@ -5,7 +5,7 @@ pipeline {
         AWS_ACCOUNT_ID = "140612709421"
         AWS_REGION     = "ap-south-1"
         CLUSTER_NAME   = "my-cluster"
-        ECR_REPO       = "P16"
+        ECR_REPO       = "p16"
         IMAGE_TAG      = "tag-1"
         IMAGE_URI      = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${ECR_REPO}:${IMAGE_TAG}"
     }
