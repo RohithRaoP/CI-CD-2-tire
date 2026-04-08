@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AWS_ACCOUNT_ID = "140612709421"
-        AWS_REGION     = "eu-north-1"
+        AWS_REGION     = "ap-south-1"
         CLUSTER_NAME   = "my-cluster"
         ECR_REPO       = "project16"
         IMAGE_TAG      = "tag-1"
@@ -52,8 +52,8 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                 sh """
-                # 1. Update EKS Context for Stockholm
-                aws eks update-kubeconfig --region ${AWS_REGION} --name ${CLUSTER_NAME}
+                # 1. Update EKS Context for mumbai
+                aws eks update-kubeconfig --region ap-south-1 --name my-cluster
                 
                 # 2. Apply Database (These work already)
                 kubectl apply -f k8/mongodb-Deployment.yaml
